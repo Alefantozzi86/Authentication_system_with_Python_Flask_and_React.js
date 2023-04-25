@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
-const Signup = () => {
+export const Signup = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ const Signup = () => {
         if (response.mensage == "all ok") {
           navigate("/login");
         } else {
-          alert("An error has occurred");
+          alert("A ocurrido un error");
         }
       });
   };
@@ -50,4 +50,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+
