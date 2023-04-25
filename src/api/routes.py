@@ -11,18 +11,21 @@ api = Blueprint('api', __name__)
 
 @api.route('/signup', methods=['POST'])
 def create_new_user():
-    email = request.json.get('email', None) #porque aqui es un get y no un .post?
-    password = request.json.get('password', None)
-    is_active = request.json.get('is_active', True)
+    try:
+        email = request.json.get('email', None) 
+        password = request.json.get('password', None)
+        is_active = request.json.get('is_active', True)
 
-    user = User(email=email, password=password, is_active=is_active)
-    db.session.add(user)
-    db.session.commit()
-    response_body = {
-        "message": "all ok"
-    }
+        user = User(email=email, password=password, is_active=is_active)
+        db.session.add(user)
+        db.session.commit()
+        response_body = {
+            "message": "all ok"
+        }
 
-    return jsonify(response_body), 200
+        return jsonify(response_body), 200
+    except Exception as e: 
+        return jsonify({"error": str(e)}),401   
 
 @api.route('/login', methods=['POST'])
 def login_user():

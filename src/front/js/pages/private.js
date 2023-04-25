@@ -29,11 +29,13 @@ export const Private = () => {
 
   return (
     <>
-      <h1>Lista de Usuarios:</h1>
+      <div className="Container bg-light p-5">
+      <h1>Usuarios Registrados</h1>
       {users &&
         users.map((user) => {
           return <p key={user.id}>{user.email}</p>;
         })}
+        </div>
     </>
   );
 };

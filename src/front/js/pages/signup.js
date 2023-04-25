@@ -12,7 +12,7 @@ export const Signup = () => {
     fetch(process.env.BACKEND_URL + "/api/signup", {
       method: "POST",
       headers: {
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
@@ -21,9 +21,10 @@ export const Signup = () => {
     })
       .then((res) => res.json())
       .then((response) => {
-        if (response.mensage == "all ok") {
+        if (response.message == "all ok") {
           navigate("/login");
         } else {
+          console.log(response)
           alert("A ocurrido un error");
         }
       });
@@ -31,6 +32,7 @@ export const Signup = () => {
 
   return (
     <>
+    <div className="Container d-flex justify-content-center m-5">
       <input
         onChange={(event) => {
           setEmail(event.target.value);
@@ -46,6 +48,7 @@ export const Signup = () => {
         placeholder="Password"
       />
       <button onClick={handleClick}>Register</button>
+      </div>
     </>
   );
 };

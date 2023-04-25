@@ -25,27 +25,30 @@ export const Login = () => {
           localStorage.setItem("token", response.token);
           navigate("/private");
         } else {
-          alert("Something went wrong");
+          alert("Algo salio mal");
         }
       });
   };
   return (
     <>
+    <div className="container p-5 d-flex justify-content-center ">
       <input
         onChange={(event) => {
           setEmail(event.target.value);
         }}
         type="email"
-        placeholder="your email here"
+        placeholder="email"
       />
       <input
         onChange={(event) => {
           setPassword(event.target.value);
         }}
         type="password"
-        placeholder="your password here"
+        placeholder="password"
       />
       <button onClick={handleClick}>Login</button>
+      </div>
+      
     </>
   );
 };
